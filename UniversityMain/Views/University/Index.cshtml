@@ -1,0 +1,84 @@
+﻿@model IEnumerable<UniversityMain.Models.UniversityDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "University", FormMethod.Get))
+{
+    //the following are search options
+    <b> Search Option:  </b>
+    @Html.RadioButton("option", "GPA")
+    <text> GPA </text>
+    @Html.RadioButton("option", "GRE")
+    <text>GRE Score</text> 
+    <text>Country</text> @Html.RadioButton("option", "Country")
+    <text>Course Name</text> @Html.RadioButton("option", "CourseName")
+    @Html.TextBox("search")
+    <input type="submit" name="submit" value="Search" />
+}
+
+
+<table class="table" id="mytable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UniversityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UniversityDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumGpa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumGreScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UniversityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UniversityDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumGpa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumGreScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        </tbody>
+    }
+
+</table>
